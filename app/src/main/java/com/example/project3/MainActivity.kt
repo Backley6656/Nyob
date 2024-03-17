@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -30,8 +29,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ){
-                GreetingText(message = "Happy Graduation Anne",
-                from = "Jhon",
+                GreetingText(
+                    message = "Happy Graduation Anne",
+                    hope = "Good luck on your new beginnings!",
+                    from = "From Ray",
                     modifier = Modifier.padding(8.dp))
 
                 }
@@ -41,23 +42,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+fun GreetingText(message: String,hope: String, from: String, modifier: Modifier = Modifier) {
     Column (verticalArrangement = Arrangement.Center,
     modifier = Modifier.padding(8.dp)){
 
         Text(
             text = message,
             fontSize = 50.sp,
-            lineHeight = 76.sp,
+            lineHeight = 50.sp,
             textAlign = TextAlign.Center
+        )
+        Text(
+            text = hope,
+            fontSize = 20.sp,
+            modifier = modifier
+                .padding(2.dp)
+                .align(alignment = Alignment.CenterHorizontally)
+
         )
         Text(
             text = from,
             fontSize = 28.sp,
             modifier= modifier
-                .padding(16.dp)
+                .padding(10.dp)
                 .align(alignment = Alignment.End)
-
         )
     }
 }
@@ -66,7 +74,9 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     Project3Theme {
         GreetingText(
-            message = "Happy Graduation, Anne",
-            from = "From John")
+            message = "Happy Graduation Anne",
+            from = "From Ray",
+            hope = "Good luck on your new beginnings!"
+        )
     }
 }
